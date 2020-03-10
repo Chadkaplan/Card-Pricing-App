@@ -1,7 +1,7 @@
 // Include the axios npm package (Don't forget to run "npm install axios" in this folder first!)
 const axios = require('axios');
 const cheerio = require('cheerio')
-let cardName = process.argv.slice(2)
+let cardName = process.argv.slice(2).join(" ")
 // Son+Goku%2C+The+Awakened+Power
 
 // Then run a request with axios to the OMDB API with the movie specified
