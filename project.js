@@ -4,12 +4,14 @@ const cheerio = require('cheerio')
 let cardName = process.argv.slice(2).join(" ")
 // Son+Goku%2C+The+Awakened+Power
 
-// Then run a request with axios to the OMDB API with the movie specified
+// Then run a request with axios to the Cool Stuff API with the card specified
 axios.get("https://www.coolstuffinc.com/ajax_buylist.php?ajaxtype=selectsearchgamename&ajaxdata="+cardName).then(
   function(response) {
     // console.log("The card's data: " + response.data.shtml);
-    let giantString = response.data.shtml;
-    const $ = cheerio.load(giantString)
+    let shtmlRes = response.data.shtml;
+    // Parse the SHTML with cheerio
+    const $ = cheerio.load(shtmlRes)
+    // Drill into the relevant div
     let cardInfoDiv = $(".main-container");
     // console.log($(".main-container")[0].attribs)
     cardInfoDiv.each((key, value) => {
